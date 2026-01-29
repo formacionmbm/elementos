@@ -10,7 +10,7 @@ public class Ordenador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;//primitivo porque nunca puede ser null
-    private String marca;
+    private String name;
 
 }
 
