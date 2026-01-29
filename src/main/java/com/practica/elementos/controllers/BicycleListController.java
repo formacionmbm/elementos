@@ -1,7 +1,7 @@
 package com.practica.elementos.controllers;
 
-import com.practica.elementos.entities.Bicicleta;
-import com.practica.elementos.services.interfaces.ServiceBuscadores;
+import com.practica.elementos.entities.Bicycle;
+import com.practica.elementos.services.interfaces.BicycleFindService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,18 +14,18 @@ import java.util.List;
 @Controller
 @RequestMapping
 @Slf4j
-public class ListadoBicicletaController {
+public class BicycleListController {
 
     @Autowired
-    ServiceBuscadores servicio;
+    BicycleFindService service;
 
-    @GetMapping("/bicicleta")
+    @GetMapping("/bicycle")
     public String findAll(Model model) {
         log.info("[findAll]");
-        List<Bicicleta> list = servicio.buscarBicicletas();
-        log.debug("[Bicicleta List:{}", list);
+        List<Bicycle> list = service.lookForBicycle();
+        log.debug("[Bicycle List:{}", list);
 
-        model.addAttribute("listadoBicicletas", list); // Esto es meterlo en el modelo
+        model.addAttribute("bicycleList", list);
         return "/search/t_search_bicicleta";
     }
 }

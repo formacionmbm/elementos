@@ -5,9 +5,9 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Bicicleta {
+public class Bicycle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nombre;
+    private String name;
 }

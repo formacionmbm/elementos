@@ -1,30 +1,70 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Garaje de Bicicletas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<h1>Garaje de Bicicletas 🚲</h1>
-<!-- Mensaje cuando la lista está vacía -->
-<div th:if="${#lists.isEmpty(listadoBicicletas)}">
-    <p>No hay bicicletas disponibles.</p>
+<body class="bg-light">
+    <div class="container mt-5">
+    <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+        <h1 class="h3 mb-0">🚲 Garaje de Bicicletas 🚲</h1>
+    </div>
+
+    <div class="card-body">
+        <div th:if="${#lists.isEmpty(bicycleList)}" class="alert alert-warning">
+            🚲 No hay bicicletas disponibles en este momento 🚲
+        </div>
+
+        <table th:if="${!#lists.isEmpty(bicycleList)}"
+               class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>NOMBRE DE LA BURRA</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bicycle : ${bicycleList}">
+                <td th:text="${bicycle.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<!-- Tabla cuando la lista tiene datos -->
-<table th:if="${!#lists.isEmpty(listadoBicicletas)}" border="1">
-    <thead>
-    <tr>
-        <th>Nombre de mi Burra</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="bicicleta : ${listadoBicicletas}">
-        <td th:text="${bicicleta.nombre}"></td>
-    </tr>
-    </tbody>
-</table>
+</div>
+
 </body>
 </html>
 
+<!-- La clase mb-0 (El espacio) es una clase de utilidad de Bootstrap para controlar el espaciado (Box Model):
+m: Margin (Margen externo); b: Bottom (Abajo); 0: Cero espacio.
+Resultado:    Elimina el espacio que los títulos suelen dejar por debajo de ellos.
+              Esto es muy útil porque, al estar dentro de un card-header,
+              evita que el título "empuje" hacia abajo y quede mal centrado
+
+.container:        Centra el contenido y aplica un ancho máximo para que no se extienda demasiado en pantallas grandes.
+.bg-light:         Aplica un fondo gris claro a toda la página para un aspecto suave y
+.mt-5:             Añade un margen superior grande (5 unidades) al contenedor principal para separar el contenido del borde superior de la ventana.
+.card:             Creamos efecto de "tarjeta" blanca que resalta sobre el fondo.
+.shadow:           Añade una sombra sutil a la tarjeta para darle un efecto de profundidad.
+
+card-header:       Estiliza el encabezado de la tarjeta.
+bg-primary:        Background azul primario para el encabezado (por defecto, un azul vibrante).
+text-white:        Texto en blanco
+
+Clase	Color (por defecto)	Uso común
+bg-primary	Azul	Acciones principales o cabeceras.
+bg-success	Verde	Mensajes de éxito o confirmación.
+bg-danger	Rojo	Errores, borrados o alertas críticas.
+bg-warning	Amarillo	Avisos o precauciones.
+bg-info	Cian	Información adicional o ayuda.
+bg-dark	Negro/Gris oscuro	Menús o pies de página.
+bg-light	Gris muy claro	Fondos sutiles.
+
+Clases de la tabla:
+table:                       Aplica los estilos básicos (fuente, espacios).
+table-striped:               Pinta las filas alternas de gris suave (la cebra).
+table-hover:                 Resalta la fila cuando pasas el ratón por encima.
+table-dark (en thead):       Pone el encabezado en negro para que contraste.-->
