@@ -1,7 +1,9 @@
 package com.practica.elementos.controllers;
 
 import com.practica.elementos.entities.Eye;
+import com.practica.elementos.services.EyeService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,15 @@ import java.util.List;
 @RequestMapping
 public class EyeControllers {
 
+    @Autowired
+    EyeService service;
+
     @GetMapping  ("/eye")
     public String listEye (Model model) {
-        log.info("Busca Eye controller");
-        List<Eye> list= List.of();
+        log.info("EyeSearch");
+        List<Eye> list= service.EyeList(); //list.of = lista vacía
         model.addAttribute("eye", list);
+        log.debug("List:{}", list);
         return "e_eye"; //e_eye.html
     }
 
