@@ -6,6 +6,21 @@
 </head>
 <body>
 <h1>📄✅📁 Archivador 🗂️🔍🕒</h1>
-<p>Esto es un ejemplo de parrafo brotha</p>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Marca</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${listArchivadores}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.marca}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
