@@ -25,9 +25,13 @@ public class BicycleListController {
         List<Bicycle> list = service.lookForBicycle();
         log.debug("[Bicycle List:{}", list);
 
+        // model.addAttribute("bicycleList", list); --> Si comento esta línea, la página web no podrá mostrar la lista de bicicletas
         model.addAttribute("bicycleList", list);
-        return "/search/t_search_bicicleta";
+        return "/search/t_search_bicycle";
     }
+
+    // El Model es el "mensajero" o el "puente" que utiliza Spring Boot para pasar información desde el código Java (el Controlador)
+    // hacia la página web (la vista en Thymeleaf).
 }
 
 

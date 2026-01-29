@@ -1,0 +1,109 @@
+/* Variables para cambiar colores fácilmente */
+:root {
+    --color-principal: #0d6efd;
+    --color-fondo: #f8f9fa;
+}
+
+.fondo-app {
+    background-color: var(--color-fondo);
+}
+
+.contenedor-principal {
+    margin-top: 50px;
+}
+
+/* Estilizamos nuestra propia tarjeta */
+.tarjeta-bicis {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden; /* Para que las esquinas de la cabecera no sobresalgan */
+}
+
+.cabecera-azul {
+    background-color: var(--color-principal) !important;
+    padding: 20px;
+}
+
+.titulo-blanco {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Tabla con estilo profesional */
+.tabla-personalizada thead {
+    background-color: #212529;
+    color: white;
+}
+
+.tabla-personalizada tbody tr:hover {
+    background-color: #e9ecef;
+    transition: 0.3s;
+}
+
+.tabla-con-fondo {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                      url('../img/TrekDomaneSL5.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: contain !important;
+    background-color: transparent !important;
+    border-collapse: collapse;
+    /* Forzamos una altura mínima por si la tabla tiene pocas filas */
+    min-height: 300px;
+}
+
+/* IMPORTANTE: Bootstrap aplica fondos a los 'tr' y 'td', hay que quitarlos todos */
+.tabla-con-fondo tr,
+.tabla-con-fondo td,
+.tabla-con-fondo th {
+    background-color: transparent !important;
+}
+
+
+
+/*
+<!-- La clase mb-0 (El espacio) es una clase de utilidad de Bootstrap para controlar el espaciado (Box Model):
+m: Margin (Margen externo); b: Bottom (Abajo); 0: Cero espacio.
+Resultado:    Elimina el espacio que los títulos suelen dejar por debajo de ellos.
+              Esto es muy útil porque, al estar dentro de un card-header,
+              evita que el título "empuje" hacia abajo y quede mal centrado
+
+.container:        Centra el contenido y aplica un ancho máximo para que no se extienda demasiado en pantallas grandes.
+.bg-light:         Aplica un fondo gris claro a toda la página para un aspecto suave y
+.mt-5:             Añade un margen superior grande (5 unidades) al contenedor principal para separar el contenido del borde superior de la ventana.
+.card:             Creamos efecto de "tarjeta" blanca que resalta sobre el fondo.
+.shadow:           Añade una sombra sutil a la tarjeta para darle un efecto de profundidad.
+
+card-header:       Estiliza el encabezado de la tarjeta.
+bg-primary:        Background azul primario para el encabezado (por defecto, un azul vibrante).
+text-white:        Texto en blanco
+
+Clase	Color (por defecto)	Uso común
+-------------------------------------
+bg-primary	Azul	Acciones principales o cabeceras.
+bg-success	Verde	Mensajes de éxito o confirmación.
+bg-danger	Rojo	Errores, borrados o alertas críticas.
+bg-warning	Amarillo	Avisos o precauciones.
+bg-info	Cian	Información adicional o ayuda.
+bg-dark	Negro/Gris oscuro	Menús o pies de página.
+bg-light	Gris muy claro	Fondos sutiles.
+
+Clases de la tabla:
+table:                       Aplica los estilos básicos (fuente, espacios).
+table-striped:               Pinta las filas alternas de gris suave (la cebra).
+table-hover:                 Resalta la fila cuando pasas el ratón por encima.
+table-dark (en thead):       Pone el encabezado en negro para que contraste.
+
+ESTRUCTURA RECOMENDADA:
+-----------------------
+
+src/main/resources/
+├── static/
+│   ├── css/
+│   │   └── estilos.css  <-- Aquí crearemos el archivo
+│   ├── js/
+│   └── img/
+└── templates/
+    └── garaje.html      <-- Tu archivo de Thymeleaf
+*/

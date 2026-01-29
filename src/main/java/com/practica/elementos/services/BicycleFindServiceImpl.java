@@ -27,16 +27,16 @@ public class BicycleFindServiceImpl implements BicycleFindService {
 /*
     Con @Autowired:
         //    @Autowired
-        //    BicicletaRepository bicicletaRepository;
+        //    BicycleRepository bicycleRepository;
         * no puedo usar campos final
         * Se complican los TESTs Unitarios puesto que no puedo pasarle un mock a mano (requiere reflexión o levantar todo el contexto de Spring)
         * No se ven las dependencias al instanciar (están ocultas)
         * Está considerado como una práctica en desuso
 
      Con Constructor:
-         //BicicletaRepository bicicletaRepository;
-         //public ServiceBuscadoresImpl(BicicletaRepository repositorio)
-         //     this.bicicletaRepository = repositorio;
+         //BicycleRepository bicycleRepository;
+         //public BicycleFindServiceImpl(BicycleRepository bicycleRepository)
+         //     this.bicycleRepository = bicycleRepository;
          //}
 
         * Puedo usar campos final
