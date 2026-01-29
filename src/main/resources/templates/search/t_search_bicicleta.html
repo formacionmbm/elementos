@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Garaje de Bicicletas</title>
+</head>
+<body>
+<h1>Garaje de Bicicletas 🚲</h1>
+<!-- Mensaje cuando la lista está vacía -->
+<div th:if="${#lists.isEmpty(listadoBicicletas)}">
+    <p>No hay bicicletas disponibles.</p>
+</div>
+
+<!-- Tabla cuando la lista tiene datos -->
+<table th:if="${!#lists.isEmpty(listadoBicicletas)}" border="1">
+    <thead>
+    <tr>
+        <th>Nombre de mi Burra</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bicicleta : ${listadoBicicletas}">
+        <td th:text="${bicicleta.nombre}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
