@@ -13,8 +13,6 @@ public class Portaminas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idUser;
-    private String username;
-    private String name;
-    private String surname;
+    private long id;
+    private String nombre;
 }
