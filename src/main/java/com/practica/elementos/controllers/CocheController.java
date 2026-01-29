@@ -2,6 +2,7 @@ package com.practica.elementos.controllers;
 
 import com.practica.elementos.entities.Coche;
 import com.practica.elementos.repositories.CocheRepository;
+import com.practica.elementos.services.ServiceBuscadoresImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ public class CocheController {
         List<Coche> lista = cocheRepository.findAll();
                 //List.of();
         model.addAttribute("listaCoches", lista);
+        //log.debug["lista: {}", lista];
         return "coche";
     }
 }
