@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="#{title.arbol}"></title>
 </head>
 <body>
     <h2>Lista de Arboles</h2>
     <div>
         <ul th:each="arb: ${arboles}">
-            <li th:text="${arb.nombre}">Nombre</li>
-
+            <strong><li th:text="${arb.nombre}" style="color: green"></li></strong>
         </ul>
     </div>
 </body>
