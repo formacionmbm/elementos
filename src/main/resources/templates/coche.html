@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Buscador de Coches</title>
+</head>
+<body>
+
+<div>
+    <h1>Gestión de Coches</h1>
+</div>
+
+<div>
+    <form name="f_buscador" action="/coche">
+        <label for="modelo">Modelo de Coche:</label>
+        <input type="text" id="modelo" name="modelo" placeholder="Ej: COCHE1">
+
+        <button type="submit">Buscar</button>
+    </form>
+</div>
+
+<br>
+
+<div>
+    <table id="data" border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Modelo</th>
+        </tr>
+        </thead>
+
+        <tbody th:if="${listaCoches}">
+        <tr th:each="coche : ${listaCoches}">
+            <td th:text="${coche.id}">1</td>
+            <td th:text="${coche.modelo}">Modelo del coche</td>
+        </tr>
+        </tbody>
+
+        <tbody th:if="${coche}">
+        <tr>
+            <td th:text="${coche.id}">1</td>
+            <td th:text="${coche.modelo}">Modelo del coche</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${error}" class="error">
+    <p style="color: red;" th:text="${error}">Mensaje de error</p>
+</div>
+
+</body>
+</html>
