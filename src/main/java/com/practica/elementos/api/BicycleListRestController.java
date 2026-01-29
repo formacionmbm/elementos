@@ -18,13 +18,15 @@ public class BicycleListRestController {
     @Autowired
     BicycleFindService service;
 
-    //@GetMapping({"/api","/api/bicycle"})
+    //@GetMapping({"/api","/api/bicycle"}) --> Mejor lo separo para dejar claro que /api es el contexto base de la API REST
     @GetMapping("/bicycle")
     public List<Bicycle> findAll() {
         log.info("[findAll]");
         List<Bicycle> list = service.lookForBicycle();
 
-        log.debug("[Bicycle list:{}",list);
+        //log.debug("[Bicycle list:{}",list); --> Lo vamos a cambiar por Streams para poder imprimir
+        // en las trazas para cada bicicleta en una línea diferente
+        list.stream().forEach(bicycle -> log.debug("[Bicycle: {}]", bicycle));
 
         return list;
     }
