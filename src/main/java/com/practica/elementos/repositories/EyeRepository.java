@@ -1,4 +1,4 @@
-package com.practica.elementos.repository;
+package com.practica.elementos.repositories;
 
 import com.practica.elementos.entities.Eye;
 import org.springframework.data.jpa.repository.JpaRepository;
