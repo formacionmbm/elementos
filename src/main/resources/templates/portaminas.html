@@ -6,7 +6,17 @@
 </head>
 <body>
 
-<h1>Hola</h1>
+<h1>Listado de portaminas</h1>
+
+<!-- Mensaje si la lista está vacía -->
+<p th:if="${#lists.isEmpty(portaminas)}">(Vacío) No hay portaminas.</p>
+
+<!-- Listado si hay elementos -->
+<ul th:if="${!#lists.isEmpty(portaminas)}">
+    <li th:each="p : ${portaminas}">
+        <span th:text="${p}">Portaminas</span>
+    </li>
+</ul>
 
 </body>
 </html>
