@@ -1,5 +1,6 @@
 package com.practica.elementos.controllers;
 
+import com.practica.elementos.common.EyeColor;
 import com.practica.elementos.entities.Eye;
 import com.practica.elementos.services.EyeService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,9 +25,12 @@ public class EyeControllers {
     public String listEye (Model model) {
         log.info("EyeSearch");
         List<Eye> list= service.EyeList(); //list.of = lista vacía
-        model.addAttribute("EyeList", list);
-        log.debug("List:{}", list);
+        model.addAttribute("list", list);
+        model.addAttribute("colours", EyeColor.values());
+        log.debug("list:{}", list);
         return "e_eye"; //e_eye.html
     }
+
+
 
 }

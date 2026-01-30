@@ -1,9 +1,11 @@
 package com.practica.elementos.entities;
 
+import com.practica.elementos.common.EyeColor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Entity //hibernate
 @Data //lombok
@@ -13,10 +15,12 @@ public class Eye {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY) //para hacer autonuméricos
-    @Column (name="ID") //nombre de la columna
+    @Column (name= "ID")
     private long id;
-    @Column (name="NAME") //nombre de la columna
+    @Column (name= "NAME")
     private String name;
-
+    @Enumerated (EnumType.STRING) //etiqueta
+    @Column (name= "COLOR")
+    private EyeColor color; //atributo de tipo EyeColor
 
 }

@@ -9,8 +9,12 @@
 
 <div>Este es mi ojo pocho</div>
 
-<ul th:each="e:${eye}">        <!--se hace un for each que es el que recorre la lista -->
-<li th:text="${e.name}"></li>  <!--aquí escribimos todos los atributos que hay en la lista-->
+<ul>
+<li th:each="e:${list}" th:text="${e.name} +' '+${e.color}"></li>  <!--todos los atributos que hay en la lista-->
+</ul>
+
+<ul>
+    <li th:each="c:${colours}" th:text="${c}"></li>  <!--todos los atributos que hay en la lista-->
 </ul>
 </body>
 </html>
