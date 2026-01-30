@@ -35,7 +35,7 @@
 
         <div class="row justify-content-center">
             <div class="table-container">
-                <table id="datos" class="table table-hover align-middle">
+                <table id="datos" class="table table-hover">
                     <thead>
                     <tr>
                         <th class="py-3">ID</th>
@@ -50,7 +50,7 @@
                         </td>
                     </tr>
                     <tr th:if="${#lists.isEmpty(list)}">
-                        <td colspan="2" class="text-center text-muted">No hay monitores disponibles</td>
+                        <td class="text-center text-muted">No hay monitores disponibles</td>
                     </tr>
                     </tbody>
                 </table>
