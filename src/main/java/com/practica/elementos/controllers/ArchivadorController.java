@@ -3,11 +3,9 @@ package com.practica.elementos.controllers;
 import com.practica.elementos.entities.Archivador;
 import com.practica.elementos.services.ArchivadorService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +15,11 @@ import java.util.List;
 @RequestMapping("/archivador")
 public class ArchivadorController {
 
-    @Autowired
-    private ArchivadorService archivadorService;
+    private final ArchivadorService archivadorService;
+
+    public ArchivadorController(ArchivadorService archivadorService) {
+        this.archivadorService = archivadorService;
+    }
 
     @GetMapping
     public String findAll(Model model) {
@@ -28,7 +29,44 @@ public class ArchivadorController {
         model.addAttribute("listArchivadores", list);
 
         log.info("[Result ArchivadorList:{}]", list);
-
         return "t_archivador";
     }
+
+    @GetMapping("/nuevo")
+    public String nuevo(Model model) {
+        model.addAttribute("archivador", new Archivador());
+        return "t_archivador_form";
+    }
+
+    @PostMapping("/guardar")
+    public String guardar(@ModelAttribute Archivador archivador) {
+        Archivador saved = archivadorService.save(archivador);
+        log.info("[ArchivadorController/guardar] Saved archivador: {}", saved);
+        return "redirect:/archivador"; // redirect al endpoint original
+    }
+
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable Integer id, Model model) {
+        Archivador archivador = archivadorService.findById(id);
+        if (archivador == null) {
+            log.warn("[ArchivadorController/editar] Archivador not found with id: {}", id);
+            return "redirect:/archivador";
+        }
+        model.addAttribute("archivador", archivador);
+        return "t_archivador_form";
+    }
+
+    @GetMapping("/eliminar/{id}")
+    public String eliminar(@PathVariable Integer id) {
+        Archivador archivador = archivadorService.findById(id);
+        if (archivador != null) {
+            archivadorService.delete(id);
+            log.info("[ArchivadorController/eliminar] Deleted archivador with id: {}", id);
+        } else {
+            log.warn("[ArchivadorController/eliminar] Archivador not found with id: {}", id);
+        }
+        return "redirect:/archivador";
+    }
 }
+
+

@@ -2,25 +2,201 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>t_archivador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivador</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Reseteo y Estilos Base --- */
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: 'Inter', sans-serif;
+        }
+
+        body {
+          background: #f4f6f9;
+          min-height: 100vh;
+          padding: 2rem;
+          display: flex;
+          justify-content: center;
+        }
+
+        .container {
+          width: 100%;
+          max-width: 900px;
+          background: #ffffff;
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+          text-align: center;
+          margin-bottom: 2rem;
+          font-weight: 600;
+          color: #1f2937;
+        }
+
+        /* --- Estilos de la Tabla --- */
+        .table-wrapper {
+          overflow-x: auto;
+          border-radius: 8px;
+          border: 1px solid #e5e7eb;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          min-width: 500px;
+        }
+
+        thead {
+          background: #1f2937;
+          color: #ffffff;
+        }
+
+        th, td {
+          padding: 16px;
+          text-align: left;
+        }
+
+        th {
+          font-size: 0.85rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          font-weight: 600;
+        }
+
+        tbody tr {
+          border-bottom: 1px solid #e5e7eb;
+          transition: background 0.2s ease;
+        }
+
+        tbody tr:last-child {
+          border-bottom: none;
+        }
+
+        tbody tr:hover {
+          background: #F0F0F0;
+        }
+
+        td {
+          color: #374151;
+          font-size: 0.95rem;
+          vertical-align: middle;
+        }
+
+        /* --- Sistema de Botones --- */
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 16px;
+          border-radius: 6px;
+          text-decoration: none;
+          font-size: 0.85rem;
+          font-weight: 600;
+          transition: all 0.2s ease;
+          cursor: pointer;
+          border: 1px solid transparent;
+          gap: 8px;
+        }
+
+        .btn:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:active {
+          transform: translateY(0);
+        }
+
+        /* Botón Crear */
+        .btn-create {
+          background-color: #10b981;
+          color: white;
+          margin-bottom: 1.5rem;
+        }
+        .btn-create:hover { background-color: #059669; }
+
+        /* Botón Editar */
+        .btn-edit {
+          background-color: #eff6ff;
+          color: #2563eb;
+          border-color: #bfdbfe;
+        }
+        .btn-edit:hover {
+          background-color: #2563eb;
+          color: white;
+        }
+
+        /* Botón Eliminar (Rojo) */
+        .btn-delete {
+          background-color: #fef2f2;
+          color: #dc2626;
+          border-color: #fecaca;
+        }
+        .btn-delete:hover {
+          background-color: #dc2626;
+          color: white;
+        }
+
+        /* Contenedor de Acciones */
+        .action-group {
+          display: flex;
+          gap: 10px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 640px) {
+          .container { padding: 1.5rem; }
+          h1 { font-size: 1.5rem; }
+          .action-group { flex-direction: column; }
+          .btn { width: 100%; }
+        }
+    </style>
 </head>
+
 <body>
-<h1>📄✅📁 Archivador 🗂️🔍🕒</h1>
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Marca</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="item : ${listArchivadores}">
-            <td th:text="${item.id}"></td>
-            <td th:text="${item.marca}"></td>
-        </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <h1>📄 Archivador 🗂️</h1>
+
+    <a href="/archivador/nuevo" class="btn btn-create">
+        <span>➕</span> Nuevo Archivador
+    </a>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Marca</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${listArchivadores}">
+                <td th:text="${item.id}">1</td>
+                <td th:text="${item.marca}">Marca Ejemplo</td>
+                <td>
+                    <div class="action-group">
+                        <a th:href="@{/archivador/editar/{id}(id=${item.id})}" class="btn btn-edit">
+                            <span>✏️</span> Editar
+                        </a>
+                        <a th:href="@{/archivador/eliminar/{id}(id=${item.id})}"
+                           class="btn btn-delete"
+                           onclick="return confirm('¿Estás seguro de que deseas eliminar este archivador?')">
+                            <span>🗑️</span> Eliminar
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

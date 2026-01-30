@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Archivador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background: #f4f6f9; min-height: 100vh; padding: 2rem; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 500px; background: #ffffff; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        h2 { text-align: center; margin-bottom: 1.5rem; font-weight: 600; }
+        h2.crear { color: #10b981; } /* verde para nuevo */
+        h2.editar { color: #3b82f6; } /* azul para editar */
+        form div { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        input[type="text"] { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem; }
+        button { border: none; padding: 0.7rem 1.2rem; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: background 0.2s ease; color: white; }
+        button.crear { background: #10b981; }
+        button.crear:hover { background: #059669; }
+        button.editar { background: #3b82f6; }
+        button.editar:hover { background: #2563eb; }
+        a.cancel { display: inline-block; margin-left: 1rem; text-decoration: none; color: #6b7280; font-weight: 500; }
+        a.cancel:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h2 th:class="${archivador.id == null or archivador.id == 0} ? 'crear' : 'editar'"
+        th:text="${archivador.id == null or archivador.id == 0} ? '➕ Nuevo Archivador' : '✏️ Editar Archivador'"></h2>
+
+    <form th:action="@{/archivador/guardar}" th:object="${archivador}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+
+        <div>
+            <label>Marca</label>
+            <input type="text" th:field="*{marca}" required>
+        </div>
+
+        <div style="text-align: center;">
+            <button type="submit"
+                    th:class="${archivador.id == null or archivador.id == 0} ? 'crear' : 'editar'"
+                    th:text="${archivador.id == null or archivador.id == 0} ? 'Crear' : 'Actualizar'"></button>
+            <a href="/archivador" class="cancel">Cancelar</a>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

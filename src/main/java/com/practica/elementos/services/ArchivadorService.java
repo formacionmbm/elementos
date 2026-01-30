@@ -24,4 +24,19 @@ public class ArchivadorService implements ArchivadorInterface {
 
         return archivadorRepository.findAll();
     }
+
+    @Override
+    public Archivador save(Archivador archivador) {
+        return archivadorRepository.save(archivador);
+    }
+
+    @Override
+    public Archivador findById(Integer id) {
+        return archivadorRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        archivadorRepository.deleteById(id);
+    }
 }
