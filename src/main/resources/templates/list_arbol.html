@@ -10,8 +10,16 @@
     <div class="contenedor-lista">
         <ul>
             <li th:each="arb : ${arboles}"
-                th:text="${arb.nombre}">
+                th:text="${arb.nombre} + '
+                de la familia: ' + ${arb.familia}">
             </li>
+        </ul>
+    </div>
+    <br><br>
+    <div class="contenedor-lista">
+        <h2>Listado Familias</h2>
+        <ul>
+            <li th:each="fam:${familias}" th:text="${fam}"></li>
         </ul>
     </div>
 </body>

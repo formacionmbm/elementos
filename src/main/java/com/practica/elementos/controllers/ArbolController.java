@@ -1,5 +1,6 @@
 package com.practica.elementos.controllers;
 
+import com.practica.elementos.common.Familia;
 import com.practica.elementos.entities.Arbol;
 import com.practica.elementos.services.ArbolService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,11 +21,12 @@ public class ArbolController {
     ArbolService service;
 
     @GetMapping
-    public String mostrarArboles( Model model){
+    public String mostrarArboles(Model model){
         log.info("[mostrarArboles]");
         List<Arbol> arboles=service.obtenerArboles();
         log.debug("[mostrarArboles: {}]", arboles);
         model.addAttribute("arboles",arboles);
+        model.addAttribute("familias", Familia.values());
 
         return "list_arbol";
     }
