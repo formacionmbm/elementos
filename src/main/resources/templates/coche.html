@@ -2,54 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/styles.css">
-    <title>Buscador de Coches</title>
+    <title>Gestión de Coches</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
 
-<div>
+<div class="header-container">
     <h1>Gestión de Coches</h1>
 </div>
-
-<div>
-    <form name="f_buscador" action="/coche">
-        <label for="modelo">Modelo de Coche:</label>
-        <input type="text" id="modelo" name="modelo" placeholder="Ej: COCHE1">
-
-        <button type="submit">Buscar</button>
-    </form>
+<div class="table-container" style="margin-top: 20px; padding: 20px; background: white; border-radius: 8px;">
+    <h3>Tipos de Combustible Disponibles:</h3>
+    <ul>
+        <li th:each="t : ${todosLosTipos}"
+            th:text="${t}"
+            style="list-style: none; display: inline-block; margin-right: 15px; padding: 5px 10px; background: #3498db; color: white; border-radius: 20px; font-size: 0.9em;">
+            Tipo
+        </li>
+    </ul>
 </div>
 
-<br>
 
-<div>
-    <table id="data" border="1">
+
+<div class="table-container">
+    <table id="data">
         <thead>
         <tr>
             <th>ID</th>
             <th>Modelo</th>
-        </tr>
+            <th>Combustible</th> </tr>
         </thead>
-
-        <tbody th:if="${listaCoches}">
+        <tbody>
         <tr th:each="coche : ${listaCoches}">
             <td th:text="${coche.id}">1</td>
-            <td th:text="${coche.modelo}">Modelo del coche</td>
+            <td th:text="${coche.modelo}">Modelo Genérico</td>
+            <td th:text="${coche.tipo != null ? coche.tipo.descripcion : 'N/A'}">Tipo</td>
         </tr>
-        </tbody>
 
-        <tbody th:if="${coche}">
-        <tr>
-            <td th:text="${coche.id}">1</td>
-            <td th:text="${coche.modelo}">Modelo del coche</td>
+        <tr th:if="${#lists.isEmpty(listaCoches)}">
+            <td colspan="3" style="text-align: center;">No se encontraron coches</td>
         </tr>
         </tbody>
     </table>
 </div>
 
-<div th:if="${error}" class="error">
-    <p style="color: red;" th:text="${error}">Mensaje de error</p>
-</div>
 
 </body>
 </html>

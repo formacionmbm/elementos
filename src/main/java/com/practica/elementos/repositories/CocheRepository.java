@@ -5,10 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface CocheRepository extends JpaRepository<Coche, Long> {
 
-    Optional<Coche> findById(String Id);
-
+    //Optional<Coche> findById(String Id);
+    List<Coche> findByModeloContainingIgnoreCase(String modelo);
 }

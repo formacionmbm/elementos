@@ -16,10 +16,23 @@ public class ServiceBuscadoresImpl implements ServiceBuscadores {
     @Autowired
     private CocheRepository cocheRepository;
 
-    @Override
+    /* @Override
     public List<Coche> buscarTodos() {
         //log.info("[ServiceBuscadoresImpl]");
 
         return cocheRepository.findAll();
+    } */
+
+    @Override
+    public List<Coche> buscarTodos() {
+      //  return List.of();
+        return cocheRepository.findAll();
+    }
+
+    @Override
+    public List<Coche> buscarModelo(String modelo) {
+        log.info("[ServiceBuscadoresImpl] -> Buscando por: {}", modelo);
+
+        return cocheRepository.findByModeloContainingIgnoreCase(modelo);
     }
 }
