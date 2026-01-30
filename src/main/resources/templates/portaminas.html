@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{title.listado}">Listado</title>
+</head>
+<body>
+
+<h1 th:text="#{title.listado}">Listado</h1>
+
+<!-- Si NO hay datos -->
+<p th:if="${#lists.isEmpty(ListaPortaminas)}">
+    (Vacío) No hay portaminas.
+</p>
+
+<!-- Si SÍ hay datos -->
+<table th:if="${!#lists.isEmpty(ListaPortaminas)}" border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${ListaPortaminas}">
+        <td th:text="${p.id}">1</td>
+        <td th:text="${p.nombre}">PORTAMINAS1</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
