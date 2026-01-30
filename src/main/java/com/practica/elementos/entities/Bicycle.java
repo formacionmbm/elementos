@@ -10,4 +10,13 @@ public class Bicycle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "BICYCLETYPE")
+    private BicycleType bicycleType;
+
+    /*
+        ✔ Guarda el enum como texto en la BD --> @Enumerated(EnumType.STRING)
+       ❌ Nunca uses ORDINAL (rompe todo si cambiás el orden del enum)
+     */
 }

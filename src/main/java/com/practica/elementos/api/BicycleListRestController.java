@@ -26,8 +26,20 @@ public class BicycleListRestController {
 
         //log.debug("[Bicycle list:{}",list); --> Lo vamos a cambiar por Streams para poder imprimir
         // en las trazas para cada bicicleta en una línea diferente
-        list.stream().forEach(bicycle -> log.debug("[Bicycle: {}]", bicycle));
+        //list.stream().forEach(bicycle -> log.debug("[Bicycle: {}]", bicycle));
+        list.forEach(bicycle -> log.debug("[Bicycle: {}]", bicycle));
 
+        /*
+        Regla práctica (muy útil)
+          ✔ Solo recorrer / ejecutar algo                  list.forEach(...)
+          ✔ Transformar, filtrar, componer operaciones     list.stream()...
+
+        Bonus: detalle fino 🔍
+          Stream.forEach() no garantiza orden en streams paralelos
+          List.forEach() sí respeta el orden
+
+          Por eso, incluso semánticamente, list.forEach es más correcto para este caso.
+        */
         return list;
     }
 }

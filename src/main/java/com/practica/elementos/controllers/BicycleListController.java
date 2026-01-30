@@ -1,6 +1,7 @@
 package com.practica.elementos.controllers;
 
 import com.practica.elementos.entities.Bicycle;
+import com.practica.elementos.entities.BicycleType;
 import com.practica.elementos.services.interfaces.BicycleFindService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class BicycleListController {
 
         // model.addAttribute("bicycleList", list); --> Si comento esta línea, la página web no podrá mostrar la lista de bicicletas
         model.addAttribute("bicycleList", list);
+        model.addAttribute("bicycleTypes", BicycleType.values());
         return "/search/t_search_bicycle";
     }
 

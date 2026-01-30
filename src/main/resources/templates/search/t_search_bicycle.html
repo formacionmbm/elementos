@@ -29,15 +29,39 @@
                 <tbody>
                 <tr th:each="bicycle : ${bicycleList}">
                     <td th:text="${bicycle.name}"></td>
+                    <td th:text="${bicycle.bicycleType}"></td>
                 </tr>
+
+
                 </tbody>
             </table>
+            </div>
+            <div>
+            <hr>
+            <!-- ENUM -->
+            <h5 class="mt-4">Bicycle Type</h5>
+
+            <ul class="list-group">
+                <li class="list-group-item"
+                    th:each="bicycleTypes : ${bicycleTypes}"
+                    th:text="${bicycleTypes}">
+                    Tipo
+                </li>
+            </ul>
+
+
         </div>
     </div>
 
 </div>
+
+<!-- ✔ Spring convierte automáticamente el String → Enum
+     ✔ No necesitás converters extra -->
+
 </body>
 </html>
+
+
 
 
 
