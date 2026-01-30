@@ -1,4 +1,4 @@
-package com.practica.elementos.entities;
+package com.practica.elementos.model;
 
 public enum BicycleType {
     ROAD,

@@ -1,5 +1,6 @@
 package com.practica.elementos.entities;
 
+import com.practica.elementos.model.BicycleType;
 import jakarta.persistence.*;
 import lombok.Data;
 

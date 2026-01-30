@@ -1,7 +1,7 @@
 package com.practica.elementos.controllers;
 
 import com.practica.elementos.entities.Bicycle;
-import com.practica.elementos.entities.BicycleType;
+import com.practica.elementos.model.BicycleType;
 import com.practica.elementos.services.interfaces.BicycleFindService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,10 @@ public class BicycleListController {
     public String findAll(Model model) {
         log.info("[findAll]");
         List<Bicycle> list = service.lookForBicycle();
-        log.debug("[Bicycle List:{}", list);
+        //log.debug("[Bicycle List:{}", list); --> Lo vamos a cambiar por Streams para poder imprimir
+        // en las trazas para cada bicicleta en una línea diferente
+        //list.stream().forEach(bicycle -> log.debug("[Bicycle: {}]", bicycle));
+        list.forEach(bicycle -> log.debug("[Bicycle: {}]", bicycle));
 
         // model.addAttribute("bicycleList", list); --> Si comento esta línea, la página web no podrá mostrar la lista de bicicletas
         model.addAttribute("bicycleList", list);
@@ -32,8 +35,8 @@ public class BicycleListController {
         return "/search/t_search_bicycle";
     }
 
-    // El Model es el "mensajero" o el "puente" que utiliza Spring Boot para pasar información desde el código Java (el Controlador)
-    // hacia la página web (la vista en Thymeleaf).
+    // El Model es el "mensajero" o el "puente" que utiliza Spring Boot para pasar información
+    //  desde el código Java (el Controlador) hacia la página web (la vista en Thymeleaf).
 }
 
 
