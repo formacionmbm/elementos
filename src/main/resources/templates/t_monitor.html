@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Monitor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
         body {
             /*background-color: #5094ec; #f8f9fa;*/
@@ -26,6 +27,11 @@
             margin-bottom: 25px;
             font-weight: 600;
         }
+        h4 {
+            color: black;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -40,21 +46,36 @@
                     <tr>
                         <th class="py-3">ID</th>
                         <th class="py-3">MARCA</th>
+                        <th class="py-3">TIPO DE PANTALLA</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="monitor : ${list}">
+                    <tr th:each="monitor : ${list_m}">
                         <td class="fw-bold" th:text="${monitor.id}">1</td>
-                        <td>
-                            <span class="text-dark" th:text="${monitor.marca}">Marca</span>
-                        </td>
+                        <td class="text-dark" th:text="${monitor.marca}">Marca</td>
+                        <td class="text-dark" th:text="${monitor.tipoPantalla}">Tipo de pantalla</td>
                     </tr>
-                    <tr th:if="${#lists.isEmpty(list)}">
+                    <tr th:if="${#lists.isEmpty(list_m)}">
                         <td class="text-center text-muted">No hay monitores disponibles</td>
                     </tr>
                     </tbody>
                 </table>
+
             </div>
+
+            <hr>
+
+            <div class="table-container">
+
+                <h4>Tipos de pantalla</h4>
+
+                <ul class="list-group" th:each="tipo : ${list_p}">
+                    <li class="list-group-item" th:text="${tipo.name}">tipo</li>
+
+                </ul>
+
+            </div>
+
 
         </div>
 

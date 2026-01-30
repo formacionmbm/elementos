@@ -1,9 +1,7 @@
 package com.practica.elementos.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.practica.elementos.common.TipoPantalla;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,12 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Monitor {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String marca;
 
+    @Enumerated(EnumType.STRING)
+    private TipoPantalla tipoPantalla;
 
     public Monitor(String marca) {
         this.marca = marca;

@@ -1,5 +1,6 @@
 package com.practica.elementos.controllers;
 
+import com.practica.elementos.common.TipoPantalla;
 import com.practica.elementos.entities.Monitor;
 import com.practica.elementos.services.exceptions.ServiceException;
 import com.practica.elementos.services.interfaces.MonitorService;
@@ -27,7 +28,11 @@ public class MonitorController {
         List<Monitor> monitores = servicio.findAllMonitor();
         log.debug("[monitores: {}]",monitores);
 
-        model.addAttribute("list", monitores);
+        List<TipoPantalla> tipoPantallas = List.of(TipoPantalla.values());
+        log.debug("[tipos de pantalla: {}]",tipoPantallas);
+
+        model.addAttribute("list_m", monitores);
+        model.addAttribute("list_p", tipoPantallas);
 
         return "t_monitor";
     }
