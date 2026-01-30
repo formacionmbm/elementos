@@ -1,0 +1,70 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo con blur */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Imagen de fondo difuminada */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/img/arbol-fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* Título */
+h2 {
+    text-align: center;
+    color: #1b5e20;
+    margin: 40px 0 30px;
+    font-size: 2rem;
+}
+
+/* Contenedor principal */
+.contenedor-lista {
+    max-width: 450px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Lista */
+ul {
+    list-style: none;
+}
+
+/* Elementos */
+li {
+    font-weight: bold;
+    color: #2e7d32;
+    padding: 12px 0;
+    border-bottom: 1px solid #dcedc8;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+.contenedor-lista ul {
+    padding-left: 0;
+}
+
+.contenedor-lista li {
+    text-align: center;
+}
+

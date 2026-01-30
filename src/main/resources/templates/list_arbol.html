@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{title.arbol}"></title>
+    <link rel="stylesheet" th:href="@{/css/arboles.css}">
 </head>
 <body>
     <h2>Lista de Arboles</h2>
-    <div>
-        <ul th:each="arb: ${arboles}">
-            <strong><li th:text="${arb.nombre}" style="color: green"></li></strong>
+    <div class="contenedor-lista">
+        <ul>
+            <li th:each="arb : ${arboles}"
+                th:text="${arb.nombre}">
+            </li>
         </ul>
     </div>
 </body>
