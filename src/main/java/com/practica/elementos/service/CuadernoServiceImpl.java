@@ -9,10 +9,14 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class CuadernoServiceImpl implements CuadernoService{
+public class CuadernoServiceImpl implements CuadernoService {
+
 
     CuadernoRepository repository;
 
+    public CuadernoServiceImpl(CuadernoRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<Cuaderno> findAll() {

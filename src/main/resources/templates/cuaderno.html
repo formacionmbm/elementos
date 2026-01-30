@@ -1,11 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Cuadernos</title>
 </head>
 <body>
-Lista Cuadernos
+
+<h1 style="text-align:left; margin-bottom:20px;">
+    Listado de Cuadernos
+</h1>
+
+<table>
+    <tbody th:if="${cuadernos != null}">
+    <tr th:each="cuaderno : ${cuadernos}">
+        <td th:text="${cuaderno.nombre}">Nombre</td>
+        <td th:text="${cuaderno.tipo}">Tipo de hoja</td>
+
+    </tr>
+
+    <tr>
+        <th>TIPOS DE HOJAS </th>
+    </tr>
+    </tbody>
+</table>
+<table>
+    <tbody th:if="${tipo != null}">
+    <tr th:each="cuaderno : ${tipo}">
+        <td th:text="${cuaderno.tipo}">Tipo de hoja</td>
+
+    </tr>
+    </tbody>
+</table>
+
+
+
 
 </body>
 </html>

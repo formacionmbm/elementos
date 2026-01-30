@@ -16,16 +16,25 @@ import java.util.List;
 @Slf4j
 public class CuadernoController {
 
-    @Autowired
+
     CuadernoService servicio;
+    public CuadernoController(CuadernoService servicio) {
+        this.servicio = servicio;
+    }
 
     @GetMapping("/cuaderno")
     public String listaCuadernos(Model model){
         log.info("[listarCuaderno]");
         List<Cuaderno> lista= servicio.findAll();
         model.addAttribute("cuadernos",lista);
+        model.addAttribute("tipo", lista);
         log.debug("[Cuadernos: lista:{}]", lista);
         return "cuaderno";
+
+
+
     }
+
+
 
 }

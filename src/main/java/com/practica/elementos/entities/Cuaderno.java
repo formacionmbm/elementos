@@ -1,6 +1,7 @@
 package com.practica.elementos.entities;
 
 
+import com.practica.elementos.common.TipoHoja;
 import jakarta.persistence.*;
 
 
@@ -15,4 +16,7 @@ public class Cuaderno {
     private long id;
 
     private String nombre;
+
+    @Enumerated(EnumType.STRING)
+    private TipoHoja tipo;
 }
