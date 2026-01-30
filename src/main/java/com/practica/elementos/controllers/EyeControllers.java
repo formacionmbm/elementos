@@ -24,7 +24,7 @@ public class EyeControllers {
     public String listEye (Model model) {
         log.info("EyeSearch");
         List<Eye> list= service.EyeList(); //list.of = lista vacía
-        model.addAttribute("eye", list);
+        model.addAttribute("EyeList", list);
         log.debug("List:{}", list);
         return "e_eye"; //e_eye.html
     }

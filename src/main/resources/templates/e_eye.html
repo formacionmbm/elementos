@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http:www.thymeleaf.org"> <!--para utilizar thymeleaf-->
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mi ojo pirujo</title>
 </head>
+
 <body>
-Mi ojo rojo pocho
- <div>este es mi ojo</div>
+
+<div>Este es mi ojo pocho</div>
+
+<ul th:each="e:${eye}">        <!--se hace un for each que es el que recorre la lista -->
+<li th:text="${e.name}"></li>  <!--aquí escribimos todos los atributos que hay en la lista-->
+</ul>
 </body>
 </html>
