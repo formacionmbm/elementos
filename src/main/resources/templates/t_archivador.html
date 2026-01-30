@@ -172,15 +172,17 @@
         <table>
             <thead>
             <tr>
-                <th>ID</th>
+                <!--<th>ID</th>-->
+                <th>Modelo</th>
                 <th>Marca</th>
                 <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="item : ${listArchivadores}">
-                <td th:text="${item.id}">1</td>
-                <td th:text="${item.marca}">Marca Ejemplo</td>
+                <!--<td th:text="${item.id}">1</td>-->
+                <td th:text="${item.modelo}">Modelo</td>
+                <td th:text="${item.marcaArchivador}">Marca</td>
                 <td>
                     <div class="action-group">
                         <a th:href="@{/archivador/editar/{id}(id=${item.id})}" class="btn btn-edit">
@@ -193,6 +195,18 @@
                         </a>
                     </div>
                 </td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Marcas</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${listMarcaArchivadores}">
+                <td th:text="${item}">Marcas</td>
             </tr>
             </tbody>
         </table>

@@ -1,12 +1,14 @@
 package com.practica.elementos.controllers;
 
 import com.practica.elementos.entities.Archivador;
+import com.practica.elementos.model.enums.MarcaArchivador;
 import com.practica.elementos.services.ArchivadorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -27,6 +29,9 @@ public class ArchivadorController {
 
         List<Archivador> list = archivadorService.findAll();
         model.addAttribute("listArchivadores", list);
+
+        List<String> listaMarca = Arrays.stream(MarcaArchivador.values()) .map(Enum::name) .toList();
+        model.addAttribute("listMarcaArchivadores", listaMarca);
 
         log.info("[Result ArchivadorList:{}]", list);
         return "t_archivador";
