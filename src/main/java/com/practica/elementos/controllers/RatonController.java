@@ -1,5 +1,6 @@
 package com.practica.elementos.controllers;
 
+import com.practica.elementos.common.TipoConexion;
 import com.practica.elementos.entities.Raton;
 import com.practica.elementos.services.interfaces.IRaton;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,8 @@ public class RatonController {
         log.info("[listaRaton]");
         List<Raton> lista = servicio.findAll();
         model.addAttribute("listaRatones", lista);
+        TipoConexion[] tipos = TipoConexion.values();
+        model.addAttribute("TiposConexion", tipos);
         return "raton";
     }
 }

@@ -1,9 +1,7 @@
 package com.practica.elementos.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.practica.elementos.common.TipoConexion;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -14,5 +12,8 @@ public class Raton {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private TipoConexion conexion;
 
 }
