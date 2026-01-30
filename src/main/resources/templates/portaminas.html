@@ -3,31 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{title.listado}">Listado</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
 </head>
 <body>
-
+<div class="panel-centro">
 <h1 th:text="#{title.listado}">Listado</h1>
 
-<!-- Si NO hay datos -->
 <p th:if="${#lists.isEmpty(ListaPortaminas)}">
     (Vacío) No hay portaminas.
 </p>
 
-<!-- Si SÍ hay datos -->
-<table th:if="${!#lists.isEmpty(ListaPortaminas)}" border="1">
+<table th:if="${!#lists.isEmpty(ListaPortaminas)}">
     <thead>
     <tr>
         <th>ID</th>
         <th>Nombre</th>
+        <th>Color</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="p : ${ListaPortaminas}">
         <td th:text="${p.id}">1</td>
         <td th:text="${p.nombre}">PORTAMINAS1</td>
+
+        <!-- COLOR DINÁMICO -->
+        <td th:text="${p.color}" th:class="${p.color}">ROJO</td>
     </tr>
     </tbody>
 </table>
+</div>
+<div class="panel-centro">
+<h2>Colores disponibles (enum)</h2>
+
+<table th:if="${colores != null}">
+    <thead>
+    <tr>
+        <th>Valor enum</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c : ${colores}">
+        <td th:text="${c}" th:class="${c}">ROJO</td>
+    </tr>
+    </tbody>
+</table>
+</div>
 
 </body>
 </html>

@@ -8,24 +8,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.practica.elementos.enums.ColoresPortaminas;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
 @RequestMapping
 @Slf4j
 public class ListadoPortaminasController {
+
     @Autowired
     ListPortaminas servicio;
 
     @GetMapping("/portaminas")
     public String listaPortaminas(Model model) {
+
         log.info("[listarPortaminas]");
 
+        // 1️⃣ Datos de la BD
         List<Portaminas> list = servicio.findAll();
         model.addAttribute("ListaPortaminas", list);
-        log.debug("lista:{}",list);
+        log.debug("lista: {}", list);
 
+        // 2️⃣ Datos del ENUM (NO vienen de la BD)
+        model.addAttribute("colores", ColoresPortaminas.values());
+
+        // 3️⃣ Vista
         return "portaminas";
     }
 }
