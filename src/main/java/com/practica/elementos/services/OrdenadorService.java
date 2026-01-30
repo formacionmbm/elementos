@@ -12,12 +12,14 @@ import java.util.List;
 public class OrdenadorService implements ListarOrdenadores {
 
     OrdenadorRepository repository;
+
     public OrdenadorService(OrdenadorRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public List<Ordenador> index() {
+        log.info("[index]");
         return repository.findAll();
     }
 

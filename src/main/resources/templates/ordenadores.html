@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title >Ordenadores</title>
+
 </head>
 <body>
 <div >
     <table id="data">
         <thead>
         <tr>
-            <th th:text="#{label.name}">Nombre</th>
+            <th >Lista ordenador</th>
         </tr>
         </thead>
-        <tbody th:if="${list}">
-        <tr th:each="ordenador : ${list}">
+        <tbody th:if="${listOrdenadores}">
+        <tr th:each="ordenador : ${listOrdenadores}">
             <td th:text="${ordenador.name}">Nombre</td>
 
         </tr>
