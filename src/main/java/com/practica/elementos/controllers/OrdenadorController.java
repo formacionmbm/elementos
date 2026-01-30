@@ -1,0 +1,30 @@
+package com.practica.elementos.controllers;
+
+import com.practica.elementos.entities.Ordenador;
+import com.practica.elementos.services.interfaces.ListarOrdenadores;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
+@Controller
+@RequestMapping
+@Slf4j
+public class OrdenadorController {
+
+    @Autowired
+    ListarOrdenadores servicio;
+
+    @GetMapping("/ordenador")
+    public String index(Model model) {
+        log.info("[index]");
+        List<Ordenador> listaDeOrdenadores = servicio.index();
+        model.addAttribute("listOrdenadores", listaDeOrdenadores);
+        return "ordenadores";
+    }
+}
+
